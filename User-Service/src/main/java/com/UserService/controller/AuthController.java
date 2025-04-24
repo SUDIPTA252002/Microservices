@@ -18,8 +18,10 @@ import com.UserService.utils.LoginRequest;
 import com.UserService.utils.RefreshTokenRequest;
 import com.UserService.utils.RegisterRequest;
 
+import jakarta.validation.Valid;
+
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/auhth")
 public class AuthController 
 {
    private final AuthService authService;
@@ -35,14 +37,14 @@ public class AuthController
     }
     
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request)
+    public ResponseEntity<?> registerUser(@RequestBody @Valid RegisterRequest request)
     {
         AuthResponse response=authService.register(request);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest loginRequest)
+    public ResponseEntity<AuthResponse> login(@RequestBody@Valid LoginRequest loginRequest)
     {
 
         AuthResponse response=authService.login(loginRequest);

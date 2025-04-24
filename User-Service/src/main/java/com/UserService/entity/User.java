@@ -45,7 +45,7 @@ public class User implements UserDetails
     @Column(nullable = false,unique = true)
     private String email;
 
-    @Size(min = 8, message = "Password must be at least 8 characters long")
+    @Size(min = 6, max = 20, message = "Password must be between 6 and 20 characters")
     @Column(nullable = false)
     private String password;
 
@@ -78,9 +78,34 @@ public class User implements UserDetails
     {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
+    
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
     @Override
     public String getUsername() {
         return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.UserService.entity.User;
 import com.UserService.entity.UserRole;
@@ -13,6 +14,7 @@ import com.UserService.utils.AuthResponse;
 import com.UserService.utils.LoginRequest;
 import com.UserService.utils.RegisterRequest;
 
+@Service
 public class AuthService 
 {
     private UserRepo userRepo;

@@ -24,7 +24,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="Refresh-Tokens")
+@Table(name="RefreshTokens")
 public class RefreshToken 
 {
 
